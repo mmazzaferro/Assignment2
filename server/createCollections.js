@@ -1,6 +1,11 @@
-module.exports = function(MongoClient, url, callback){
+//module.exports = function(MongoClient, url, callback){
+    const assert = require('assert');
+    const MongoClient = require('mongodb').MongoClient
+    const url = 'mongodb://localhost:27017'
     MongoClient.connect(url, {poolSize:10, useNewUrlParser: true}, function(err, client){
+        assert.equal(null, err);
         const db = client.db('assignment2')
+        
         db.createCollection("users", function(err, res){
             if (err) throw err
             console.log("Users Collection created!")
@@ -18,4 +23,4 @@ module.exports = function(MongoClient, url, callback){
         })
         client.close()
     })   
-}
+//}

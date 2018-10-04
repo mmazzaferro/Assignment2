@@ -8,7 +8,7 @@ module.exports = function(app){
         var password = req.query.password
         console.log("username:" + username + "password: " + password)
         require('./retrieve/userAuth')(MongoClient, url, username, password, function(user){
-            res.send({user: user.type})
+            res.send({user: user})
         })
     })
 
@@ -34,6 +34,36 @@ module.exports = function(app){
         var channel
         require('./retrieve/getChatHistory')(MongoClient, url, channel, function(messages){
             res.send({messages: messages})
+        })
+    })
+
+    //Add User
+    app.all('/addUser', (req, res) => {
+        var username = req.query.user
+        var email = req.query.email
+        var type = req.query.type
+        var password = req.query.password
+        require('./add/insertUserData')(MongoClient, url, username, password, email, type, function(user){
+            res.send({user: user})
+        })
+    })
+
+    //Add Group
+    app.all('/addGroup', (req, res) => {
+        var name = req.query.name
+        var users = req.query.users
+        this.require('./add/insertGroupData')(MongoClient, url, name, users, function(group){
+            res.send({group:group})
+        })
+    })
+
+    //Add Channel
+    app.all('/addChannel', (req, res) => {
+        var name = req.query.name
+        var group = req.query.group
+        var users = req.query.users
+        this.require('./add/insertChannelData')(MongoClient, url, name, group, users, function(channel){
+            res.send({channel:channel})
         })
     })
 

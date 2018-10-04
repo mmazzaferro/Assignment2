@@ -29,9 +29,7 @@ export class GroupsComponent implements OnInit {
       this.username = sessionStorage.getItem('username')
       console.log(this.username)
     }
-    this.http.get("auth?username=" + this.username +"&password=" + this.password).subscribe(res => {
-      console.log(res)
-    })
+   
     this.getGroups(this.username)
   }
 

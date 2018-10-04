@@ -9,7 +9,11 @@
         <label for="inputEmail" class="sr-only">Email address</label>
         <input [(ngModel)]="email" type="email" name="email" class="form-control" placeholder="Email address" required><br>
         <label for="inputType" class="sr-only">Type</label>
-        <input [(ngModel)]="type" type="type" name="type" class="form-control" placeholder="type" required><br>
+        <select name="type" [(ngModel)]="type" class="form-control">
+          <option value="user">User</option>
+          <option value="group">Group</option>
+          <option value="super">Super</option>
+        </select>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
       </form>
     </div>

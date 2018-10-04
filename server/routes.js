@@ -52,7 +52,7 @@ module.exports = function(app){
     app.all('/addGroup', (req, res) => {
         var name = req.query.name
         var users = req.query.users
-        this.require('./add/insertGroupData')(MongoClient, url, name, users, function(group){
+        require('./add/insertGroupData')(MongoClient, url, name, users, function(group){
             res.send({group:group})
         })
     })
@@ -62,7 +62,7 @@ module.exports = function(app){
         var name = req.query.name
         var group = req.query.group
         var users = req.query.users
-        this.require('./add/insertChannelData')(MongoClient, url, name, group, users, function(channel){
+        require('./add/insertChannelData')(MongoClient, url, name, group, users, function(channel){
             res.send({channel:channel})
         })
     })

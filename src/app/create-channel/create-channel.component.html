@@ -1,13 +1,13 @@
 <div class="text-center">
     <div class="d-flex justify-content-center align-items-center container ">
-      <form class="form-signin">
+      <form class="form-signin"(submit)="createChannel($event)">
         <h1 class="h3 font-weight-normal">Create New Channel</h1><br>
-        <label for="username" class="sr-only">Name</label>
-        <input type="username" id="username" class="form-control" placeholder="username" required autofocus><br>
+        <label for="name" class="sr-only">Name</label>
+        <input [(ngModel)]="name" type="name" name="name" class="form-control" placeholder="Name" required autofocus><br>
         <label for="groupname" class="sr-only">Group Name</label>
-        <input type="text" id="group_name" class="form-control" placeholder="group_name" required><br>
-        <label for="inputPassword" class="sr-only">Users</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required><br>
+        <input [(ngModel)]="group" type="text" name="group" class="form-control" placeholder="Group name" required><br>
+        <label for="users" class="sr-only">Users</label>
+        <input [(ngModel)]="users" type="text" name="users" class="form-control" placeholder="Users" required><br>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
       </form>
     </div>

@@ -9,6 +9,8 @@ import { GroupsComponent } from './groups/groups.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateGroupComponent } from './create-group/create-group.component';
 import { CreateChannelComponent } from './create-channel/create-channel.component';
+import { ChannelsComponent } from './channels/channels.component';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { CreateChannelComponent } from './create-channel/create-channel.componen
     GroupsComponent,
     CreateUserComponent,
     CreateGroupComponent,
-    CreateChannelComponent
+    CreateChannelComponent,
+    ChannelsComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

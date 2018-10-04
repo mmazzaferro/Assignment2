@@ -1,12 +1,8 @@
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-  <a class="btn btn-outline-primary" *ngIf="username;else option2" (click)="logout()">Logout</a>
-  <ng-template #option2>
-    <a class="btn btn-outline-primary" *ngIf="username" routerLink="login">Login</a>
-  </ng-template>
-</div>
+<a class="btn btn-outline-primary" *ngIf="username" (click)="logout()">Logout</a>
+
 <h2>Groups</h2>
 <ul>
-  <li *ngFor="let group of groups">
-    {{group.name}}
-  </li>
+  <a *ngFor="let group of groups">
+    <a class="btn btn-outline-secondary" (click)="getChannels(group.name)">{{group.name}}</a>
+  </a>
 </ul>

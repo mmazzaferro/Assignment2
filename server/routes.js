@@ -21,9 +21,19 @@ module.exports = function(app){
     })
 
     //Get list of channels a user is a member of
-    app.all('/channelList', (_, res) => {
-        require('./retrieve/getChannels')(MongoClient, url, function(channels){
+    app.all('/channelsList', (req, res) => {
+        var group = req.query.group
+        var user = req.query.user
+        require('./retrieve/getChannels')(MongoClient, url, group, user, function(channels){
             res.send({channels: channels})
+        })
+    })
+
+    //Get Chat History
+    app.all('/chatHistory', (req, res) => {
+        var channel
+        require('./retrieve/getChatHistory')(MongoClient, url, channel, function(messages){
+            res.send({messages: messages})
         })
     })
 

@@ -41,6 +41,11 @@ export class GroupsComponent implements OnInit {
       this.groups = x.groups
     })
   }
+
+  getChannels(group){
+    sessionStorage.setItem("group", group)
+    this.router.navigateByUrl('/channels')
+  }
   ngOnDestory(){
     if(this.connection){
       this.connection.unsubscribe()

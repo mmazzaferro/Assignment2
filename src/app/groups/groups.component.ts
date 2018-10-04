@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http'
 })
 export class GroupsComponent implements OnInit {
   username: string
+  password: string
   userType: string
   groups
   connection
@@ -17,6 +18,7 @@ export class GroupsComponent implements OnInit {
 
   ngOnInit() {
     this.username = sessionStorage.getItem("username")
+    this.password = sessionStorage.getItem("password")
     console.log(this.username)
     if(sessionStorage.getItem('username') == ""){
       //check valid session is available
@@ -26,8 +28,11 @@ export class GroupsComponent implements OnInit {
     } else {
       this.username = sessionStorage.getItem('username')
       console.log(this.username)
-      this.getGroups(this.username)
     }
+    this.http.get("auth?username=" + this.username +"&password=" + this.password).subscribe(res => {
+      console.log(res)
+    })
+    this.getGroups(this.username)
   }
 
   getGroups(username){

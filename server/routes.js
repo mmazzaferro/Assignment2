@@ -3,11 +3,12 @@ module.exports = function(app){
     const url = 'mongodb://localhost:27017'
 
     //Check username and password exists and matches in the database
-    app.all('/auth', (_, res) => {
+    app.all('/auth', (req, res) => {
         var username = req.query.username
         var password = req.query.password
-        require('./retrieve/userAuth')(MongoClient, url, username, password, function(type){
-            res.send({success:true, type: type})
+        console.log("username:" + username + "password: " + password)
+        require('./retrieve/userAuth')(MongoClient, url, username, password, function(user){
+            res.send({user: user.type})
         })
     })
 
@@ -15,14 +16,14 @@ module.exports = function(app){
     app.all('/groupsList', (req, res) => {
         var user = req.query.user
         require('./retrieve/getGroups')(MongoClient, url, user, function(groups){
-            res.send({success: true, groups: groups})
+            res.send({groups: groups})
         })
     })
 
     //Get list of channels a user is a member of
     app.all('/channelList', (_, res) => {
         require('./retrieve/getChannels')(MongoClient, url, function(channels){
-            res.send({success: true, channels: channels})
+            res.send({channels: channels})
         })
     })
 

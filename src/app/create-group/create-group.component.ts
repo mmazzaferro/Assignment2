@@ -21,5 +21,6 @@ export class CreateGroupComponent implements OnInit {
       this.router.navigateByUrl('/groups')
     })
   }
+  
 
 }

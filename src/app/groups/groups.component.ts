@@ -49,10 +49,14 @@ export class GroupsComponent implements OnInit {
       this.connection.unsubscribe()
     }
   }
-
+  login(){
+    this.router.navigateByUrl('/login')
+  }
   logout(){
     sessionStorage.clear()
     this.router.navigateByUrl('/')
   }
-
+  createGroup(){
+    this.router.navigateByUrl('/createGroup')
+  }
 }

@@ -24,4 +24,8 @@ export class CreateUserComponent implements OnInit {
       this.router.navigateByUrl('/')
     })
   }
+  logout(){
+    sessionStorage.clear()
+    this.router.navigateByUrl('/')
+  }
 }

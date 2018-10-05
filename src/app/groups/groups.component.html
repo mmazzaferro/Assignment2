@@ -1,8 +1,21 @@
-<a class="btn btn-outline-primary" *ngIf="username" (click)="logout()">Logout</a>
-
 <h2>Groups</h2>
-<ul>
-  <a *ngFor="let group of groups">
-    <a class="btn btn-outline-secondary" (click)="getChannels(group.name)">{{group.name}}</a>
-  </a>
-</ul>
+
+<div *ngIf="username;else show_login">
+  <ul>
+    <a *ngFor="let group of groups">
+      <a class="btn btn-outline-secondary" (click)="getChannels(group.name)">{{group.name}}</a>
+    </a>
+  </ul>
+  <div *ngIf="admin">
+    <a class="p-2 text-dark" (click)="createGroup()">Create Group</a>
+  </div>
+  <a class="btn btn-outline-primary" *ngIf="username" (click)="logout()">Logout</a>
+</div>
+<ng-template #show_login>
+  <div>
+    <a class="btn btn-outline-primary" (click)="login()">Login</a>
+  <router-outlet></router-outlet>
+  </div>
+</ng-template>
+
+

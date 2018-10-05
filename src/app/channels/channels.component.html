@@ -1,8 +1,11 @@
-<a class="btn btn-outline-primary" *ngIf="username" (click)="logout()">Logout</a>
-
 <h2>Channels</h2>
 <ul>
   <a *ngFor="let channel of channels">
     <a class="btn btn-outline-secondary" (click)="getChat()">{{channel.name}}</a>
   </a>
 </ul>
+<div *ngIf="admin">
+  <a class="p-2 text-dark" (click)="createChannel()">Create Channel</a>
+</div>
+
+<a class="btn btn-outline-primary" *ngIf="username" (click)="logout()">Logout</a>

@@ -31,5 +31,15 @@ export class ChannelsComponent implements OnInit {
     sessionStorage.setItem("channel", channel)
     this.router.navigateByUrl('/chat')
   }
+  
+  logout(){
+    sessionStorage.clear()
+    this.router.navigateByUrl('/')
+  }
+
+  createChannel(){
+    this.router.navigateByUrl('/createChannel')
+  }
+
 
 }

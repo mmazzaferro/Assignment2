@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http'
 export class LoginComponent implements OnInit {
   username:string
   password:string
+
   constructor(private router:Router, private formsModule: FormsModule, private http: HttpClient) { }
 
   ngOnInit() {
@@ -23,7 +24,12 @@ export class LoginComponent implements OnInit {
 
     this.http.get("auth?username=" + this.username +"&password=" + this.password).subscribe(res => {
       var x = JSON.parse(JSON.stringify(res))
-      console.log("user type:" + x.user.type)
+      if(x.user[0].type == "super" || x.user[0].type == "group"){
+        sessionStorage.setItem("admin", x.user[0].type)
+      } else {
+        sessionStorage.removeItem("admin")
+      }
+      console.log(x.user[0].type)
       if(x.user.length > 0){ //if user found x.user.length will be 1
         this.router.navigateByUrl('/groups')
       }else{

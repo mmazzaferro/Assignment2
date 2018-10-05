@@ -10,15 +10,16 @@ import { HttpClient } from '@angular/common/http'
 export class GroupsComponent implements OnInit {
   username: string
   password: string
-  userType: string
   groups
   connection
+  admin
 
   constructor(private router: Router, private http: HttpClient) { }
 
   ngOnInit() {
     this.username = sessionStorage.getItem("username")
     this.password = sessionStorage.getItem("password")
+    this.admin = sessionStorage.getItem("admin")
     console.log(this.username)
     if(sessionStorage.getItem('username') == ""){
       //check valid session is available
@@ -58,5 +59,8 @@ export class GroupsComponent implements OnInit {
   }
   createGroup(){
     this.router.navigateByUrl('/createGroup')
+  }
+  createUser(){
+    this.router.navigateByUrl('/createUser')
   }
 }

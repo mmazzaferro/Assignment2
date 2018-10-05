@@ -11,12 +11,13 @@ export class ChannelsComponent implements OnInit {
   username: string
   group: string
   channels
+  admin
   constructor(private router: Router, private http: HttpClient) { }
 
   ngOnInit() {
     this.username = sessionStorage.getItem("username")
     this.group = sessionStorage.getItem("group")
-
+    this.admin = sessionStorage.getItem("admin")
     this.getChannels(this.username, this.group)
   }
 
@@ -39,6 +40,10 @@ export class ChannelsComponent implements OnInit {
 
   createChannel(){
     this.router.navigateByUrl('/createChannel')
+  }
+
+  createUser(){
+    this.router.navigateByUrl('/createUser')
   }
 
 
